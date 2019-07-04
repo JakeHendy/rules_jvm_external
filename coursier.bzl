@@ -441,9 +441,9 @@ def _get_java_proxy_args(repository_ctx):
 def _cat_file(repository_ctx, filepath):
     if (_is_windows(repository_ctx)):
         exec_result = repository_ctx.execute([
-            repository_ctx.os.environ.get("BAZEL_SH"),
-            "-lc",
-            "cat " + str(repository_ctx.path(filepath)),
+            "powershell,
+            "-c",
+            "get-content " + str(repository_ctx.path(filepath)),
         ])
     else:
         exec_result = repository_ctx.execute([
